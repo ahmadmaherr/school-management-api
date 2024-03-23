@@ -2,8 +2,13 @@ const config                = require('./config/index.config.js');
 const Cortex                = require('ion-cortex');
 const ManagersLoader        = require('./loaders/ManagersLoader.js');
 const express               = require('express');
+const routes                = require('./routes/index.js');
+const bodyParser            = require('body-parser')
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json());
 
 app.listen(3000, function(){
     console.log('listening on port ' + 3000);
@@ -12,6 +17,9 @@ app.listen(3000, function(){
 const mongoDB = config.dotEnv.MONGO_URI? require('./connect/mongo')({
     uri: config.dotEnv.MONGO_URI
 }):null;
+
+
+app.use("/api", routes);
 
 // const cache = require('./cache/cache.dbh')({
 //     prefix: config.dotEnv.CACHE_PREFIX ,
