@@ -13,6 +13,13 @@ const signUp = async (req, res)=>{
 
         const school = await School.findOne({name: schoolName}); // Fetch all classes
 
+        if( !school ){
+            res.status(400).json({
+                status: 400,
+                message: "School not found"
+            });
+        }
+
         const newUser = await User.create({ 
             firstName,
             lastName,
@@ -56,36 +63,40 @@ const login = async (req, res)=>{
             username,
         });
 
-        if (!(await bcrypt.compare(password, user.password))){
-            res.status(200).json({
-                status: 200,
-                message: "Wrong username or password" 
-            }); 
-        }else{
-            if(user){
-                // Insert login token record with device infomation
-                let token = await createJWToken(user.id, user.username, user.role);
-
-                if(token){
-                    // Send a success response
-                    res.status(200).json({
-                        status: 200,
-                        message: "User logged in successfully",
-                        token
-                    });
-                }else{
-                    res.status(400).json({
-                        status: 400,
-                        message: "Something went wrong"
-                    });
-                }
-            } else {
+        if(user){
+            if (!(await bcrypt.compare(password, user.password))){
                 res.status(200).json({
                     status: 200,
                     message: "Wrong username or password" 
                 }); 
+            }else{
+                    // Insert login token record with device infomation
+                    let token = await createJWToken(user.id, user.username, user.role);
+
+                    await UserLogin.create({
+                        token: token, 
+                        userId: user.id
+                    });
+
+                    if(token){
+                        // Send a success response
+                        res.status(200).json({
+                            status: 200,
+                            message: "User logged in successfully",
+                            token
+                        });
+                    }else{
+                        res.status(400).json({
+                            status: 400,
+                            message: "Something went wrong"
+                        });
+                    }        
             }
-        
+        } else {
+            res.status(200).json({
+                status: 200,
+                message: "Wrong username or password" 
+            }); 
         }       
 
     } catch (err){

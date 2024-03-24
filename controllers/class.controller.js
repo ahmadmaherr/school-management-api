@@ -5,10 +5,14 @@ const User = require("../models/users");
 const getAllClasses = async (req, res) => {
     try {
         const classes = await Class.find(); // Fetch all classes
-
-        res.status(200).json({ classes }); // Send classes in the response
+        
+        res.status(200).json({ 
+            classes 
+        }); // Send classes in the response
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -20,12 +24,18 @@ const getClassById = async (req, res) => {
         const classInstance = await Class.findById(classId);
 
         if (!classInstance) {
-            return res.status(404).json({ error: 'Class not found.' });
+            return res.status(404).json({ 
+                error: 'Class not found.' 
+            });
         }
 
-        res.status(200).json({ class: classInstance }); // Send class in the response
+        res.status(200).json({ 
+            class: classInstance 
+        }); // Send class in the response
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -51,7 +61,9 @@ const createClass = async (req, res) => {
 
             // Validate input data (e.g., check if name and numberOfStudents are provided)
             if (!name || !schoolId) {
-                return res.status(400).json({ error: 'Name and schoolId are required fields.' });
+                return res.status(400).json({ 
+                    error: 'Name and schoolId are required fields.' 
+                });
             }
 
             // Create a new class instance
@@ -96,7 +108,9 @@ const updateClass = async (req, res) => {
 
         // Validate input data
         if (!name || !schoolId) {
-            return res.status(400).json({ error: 'Name and schoolId are required fields.' });
+            return res.status(400).json({ 
+                error: 'Name and schoolId are required fields.' 
+            });
         }
 
         // Find and update the class by ID
@@ -115,7 +129,9 @@ const updateClass = async (req, res) => {
             class: updatedClass 
         });
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -145,7 +161,9 @@ const deleteClass = async (req, res) => {
         const deletedClass = await Class.findByIdAndDelete(classId);
 
         if (!deletedClass) {
-            return res.status(404).json({ error: 'Class not found.' });
+            return res.status(404).json({ 
+                error: 'Class not found.' 
+            });
         }
 
         res.status(200).json({ 
@@ -153,7 +171,9 @@ const deleteClass = async (req, res) => {
             class: deletedClass 
         });
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 

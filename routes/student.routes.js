@@ -1,14 +1,14 @@
-const { createStudent } = require("../controllers/student.controller");
+const { getAllStudents, getStudentById, createStudent, updateStudent, deleteStudent } = require("../controllers/student.controller");
 const express = require("express");
 const { verifyJWT_MW } = require("../auth/middleware");
 
 const router = express.Router();
 
-// router.route('/').get(getAllStudents);
-// router.route('/:studentId').get(getStudentById);
+router.route('/').get(getAllStudents);
+router.route('/:studentId').get(getStudentById);
 router.route('/').post(verifyJWT_MW, createStudent);
-// router.route('/:studentId').put(verifyJWT_MW, updateStudent);
-// router.route('/:studentId').delete(verifyJWT_MW, deleteStudent);
+router.route('/:studentId').put(verifyJWT_MW, updateStudent);
+router.route('/:studentId').delete(verifyJWT_MW, deleteStudent);
 
 module.exports = router;
  

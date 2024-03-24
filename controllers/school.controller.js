@@ -4,9 +4,13 @@ const getAllSchools = async (req, res) => {
     try {
         const schools = await School.find(); // Fetch all schools
 
-        res.status(200).json({ schools }); // Send schools in the response
+        res.status(200).json({ 
+            schools 
+        }); // Send schools in the response
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -18,12 +22,18 @@ const getSchoolById = async (req, res) => {
         const school = await School.findById(schoolId);
 
         if (!school) {
-            return res.status(404).json({ error: 'School not found.' });
+            return res.status(404).json({ 
+                error: 'School not found.' 
+            });
         }
 
-        res.status(200).json({ school }); // Send school in the response
+        res.status(200).json({ 
+            school 
+        }); // Send school in the response
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -41,7 +51,9 @@ const createSchool = async (req, res) => {
 
             // Validate input data (e.g., check if name and numberOfStudents are provided)
             if (!name) {
-                return res.status(400).json({ error: 'Name is required.' });
+                return res.status(400).json({ 
+                    error: 'Name is required.' 
+                });
             }
 
             // Create a new class instance
@@ -76,7 +88,9 @@ const updateSchool = async (req, res) => {
 
         // Validate input data
         if (!name) {
-            return res.status(400).json({ error: 'Name is required.' });
+            return res.status(400).json({ 
+                error: 'Name is required.' 
+            });
         }
 
         // Find and update the school by ID
@@ -87,7 +101,9 @@ const updateSchool = async (req, res) => {
         );
 
         if (!updatedSchool) {
-            return res.status(404).json({ error: 'School not found.' });
+            return res.status(404).json({ 
+                error: 'School not found.' 
+            });
         }
 
         res.status(200).json({ 
@@ -95,7 +111,9 @@ const updateSchool = async (req, res) => {
             school: updatedSchool 
         });
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong.' + error.message });
+        res.status(500).json({ 
+            error: 'Something went wrong.' + error.message 
+        });
     }
 };
 
@@ -115,7 +133,9 @@ const deleteSchool = async (req, res) => {
         const deletedSchool = await School.findByIdAndDelete(schoolId);
 
         if (!deletedSchool) {
-            return res.status(404).json({ error: 'School not found.' });
+            return res.status(404).json({ 
+                error: 'School not found.' 
+            });
         }
 
         res.status(200).json({ 

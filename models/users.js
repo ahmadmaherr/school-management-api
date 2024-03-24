@@ -7,10 +7,12 @@ const UserSchema = mongoose.Schema({
   
   firstName: { 
   	type: String, 
+    required: true
   },
 
   lastName: {
-  	type: String
+  	type: String,
+    required: true
   },
 
   username: {
@@ -28,7 +30,8 @@ const UserSchema = mongoose.Schema({
   role: {
     type: String,
     enum: ['superadmin', 'admin'],
-    default: ['admin']
+    default: ['admin'],
+    required: true
   },
 
   _schoolId:{
