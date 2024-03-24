@@ -3,7 +3,13 @@ const School = require("../models/schools");
 const UserLogin = require("../models/userLogin");
 const bcrypt = require("bcrypt");
 
-const { createJWToken, verifyJWTToken } = require('../auth/auth');
+const config = require('../config/index.config');
+const cache = require('../cache/cache.dbh')({
+    prefix: config.dotEnv.CACHE_PREFIX,
+    url: config.dotEnv.CACHE_REDIS
+});
+
+const { createJWToken } = require('../auth/auth');
 
 
 const signUp = async (req, res)=>{ 

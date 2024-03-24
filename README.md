@@ -9,7 +9,7 @@
 
 ## Get Started
 
-This project require some prequesites and dependenscies to be installed, you can find the instructions below
+This project require some prequesites and dependencies to be installed, you can find the instructions below:
 
 > To get a local copy, follow these next steps:
 
@@ -20,30 +20,42 @@ This project require some prequesites and dependenscies to be installed, you can
    git clone https://github.com/ahmadmaherr/school-management-api
    
 
-2. Install dependenscies
+2. Install dependencies:
 
    npm install
 
 
-3. Create databases
+3. Create databases:
 
-   - Make sure MongoDB is installed on your machine and is running on port 27017 and run the following command on your command line befire running the project:
+   - Make sure MongoDB & Redis are installed on your machine and is running on port 27017 & 6379 respectively and then run the following command on your command line befire running the project:
 
     mongod
 
 
-5. Enviromental Variables Set up
+5. Enviromental Variables Set up:
 
    - Here are the environmental variables that needs to be set in a .env file. This is the default setting that I used for development, but you can change it to what works for you:
 
 
-    MONGO_URI=mongodb://localhost:27017/shcoolDB 
-    
-    SERVICE_NAME=shcoolDB
+      MONGO_URI=mongodb://localhost:27017/shcoolDB 
+      
+      SERVICE_NAME=shcoolDB
 
-    JWT_SECRET=thisismysecret
+      JWT_SECRET=thisismysecret
+      
+      BCRYPT_SALT=8 
+
+      CORTEX_PREFIX=myapp_cortex
+      
+      CORTEX_REDIS=redis://localhost:6379
+      
+      CORTEX_TYPE=local
+
+      CACHE_PREFIX=myapp_cache
+      
+      CACHE_REDIS=redis://localhost:6379
+
     
-    BCRYPT_SALT=8 
 
 
 8. Run server using the following command:
@@ -51,10 +63,6 @@ This project require some prequesites and dependenscies to be installed, you can
     npm run start
 
    
-
-### Rate Limiting
-
-The API is equipped with rate limiting to ensure fair usage and prevent abuse with 10 requests per minute max.
 
 ## Database Management with Mongoose
 
@@ -64,6 +72,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
 
 - Server runs on port `3000`
 - Database on port `27017`
+- Redis on port `6379`
 
 ### Database Schemas
 
@@ -238,7 +247,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-  #### 2. Create Class
+  #### 2. Create School
 - **Endpoint:** `POST /api/school`
 - **Description:** Create a new school.
 - **Expected Input:**
@@ -359,7 +368,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-#### 3. Get student by ID
+#### 3. Get Student by ID
 - **Endpoint:** `GET api/student/:id`
 - **Description:** Retrieve details of a specific student.
 - **Expected Output (Example):**
@@ -378,7 +387,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-#### 4. Update student
+#### 4. Update Student
 - **Endpoint:** `PATCH api/student/:id`
 - **Description:** Update information for a specific student.
 - **Expected Input:**
