@@ -4,7 +4,7 @@
   "description": "Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node insertDummyData.js && node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +29,7 @@
     "nodemon": "^3.1.0",
     "oyster-db": "*",
     "qantra-pineapple": "^1.0.7",
+    "redis": "^4.6.13",
     "request-ip": "^2.1.3",
     "useragent": "^2.3.0"
   }

@@ -11,11 +11,6 @@ async function verifyJWTToken(token) {
             }
 
             try {
-                await userLogin.create({
-                    token: token, 
-                    userId: decodedToken.id 
-                });
-
                 const { username, role } = decodedToken;
 
                 decodedToken.username = username;
@@ -32,8 +27,6 @@ async function verifyJWTToken(token) {
 async function createJWToken(id, username, role) {
     let expiresIn = 15552000; // 180 Days (60 x 60 x 24 x 180)
 
-    console.log(id)
-    console.log(role)
     let token = jwt.sign({
         id,
         username,
