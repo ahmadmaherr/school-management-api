@@ -2,7 +2,7 @@
 
 - Node.js
 - MongoDB
-- MOngoose 
+- Mongoose 
 - Express
 - Redis
 - JWT
@@ -247,7 +247,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-  #### 2. Create School
+#### 2. Create School
 - **Endpoint:** `POST /api/school`
 - **Description:** Create a new school.
 - **Expected Input:**
@@ -269,7 +269,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-#### 3. Get school by ID
+#### 3. Get School by ID
 - **Endpoint:** `GET api/school/:id`
 - **Description:** Retrieve details of a specific school.
 - **Expected Output (Example):**
@@ -308,7 +308,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-#### 5. Delete school
+#### 5. Delete School
 - **Endpoint:** `DELETE /:id`
 - **Description:** Delete a specific class.
 - **Expected Output (Example):**
@@ -415,7 +415,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-#### 5. Delete student
+#### 5. Delete Student
 - **Endpoint:** `DELETE /:id`
 - **Description:** Delete a specific student.
 - **Expected Output (Example):**
@@ -439,7 +439,7 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
   }
   ```
 
-  #### 2. Login
+#### 2. Login
 - **Endpoint:** `POST /api/user/login`
 - **Description:** Log in to an existing user account.
 - **Expected Input:**
