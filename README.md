@@ -119,13 +119,13 @@ I used Mongoose as my Object-Relational Mapping (ORM) tool for interacting with 
 
 
 ### Relationships between Models
- - School and Class Relationship
+ - School and Class Relationship:
   A School can have many Classes. This is represented by the _schoolId foreign key in the Class model, referencing the School model.
   A Class belongs to one School. This is represented by the _schoolId foreign key in the Class model, referencing the School model.
- - Class and Student Relationship
+ - Class and Student Relationship:
   A Class can have many Students. This is represented by the _classId foreign key in the Student model, referencing the Class model.
   A Student belongs to one Class. This is represented by the _classId foreign key in the Student model, referencing the Class model.
- - User and School Relationship
+ - User and School Relationship:
   A User can belong to one School. This is represented by the _schoolId foreign key in the User model, referencing the School model.
   A School can have many Users (such as administrators or staff members). This is represented by the _schoolId foreign key in the User model, referencing the School model.
 
